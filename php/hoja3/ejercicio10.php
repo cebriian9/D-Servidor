@@ -4,6 +4,4 @@ return trae;\">pruebade\\enlace</a>";
 
 print(htmlentities($frase));
 
-
-
 ?>
