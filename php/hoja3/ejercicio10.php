@@ -1,4 +1,7 @@
 <?php
+
+print("Texto literal:");
+
 $frase="<a href= \"/arbol/prueba.php\" class=\"prueba\" onmouseOver=\"status='hola';
 return trae;\">pruebade\\enlace</a>";
 
