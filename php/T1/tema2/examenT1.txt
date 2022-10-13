@@ -145,3 +145,8 @@ $$var = “dos”;
 print ($var); // produce el texto: “uno”
 print ($uno); // produce el texto: “dos”
 print ($$var); // produce el texto: “dos”
+
+$a sin nada only en la funcion
+
+global $a en todos lados 
+static $a mantiene su valor siempre aun siendo modificado por una funcion 
