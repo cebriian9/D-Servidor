@@ -1,0 +1,152 @@
+-características de la programación web 
+
+  	1-tu navegador solicita al servidor web una página, con extensión .html 
+	2- el servidor busca esa página en un almacén de páginas
+	3-si el servidor la encuentra la recupera
+	4-la envía al cliente 
+
+
+-tipos de páginas:
+	-estáticas:
+
+estas se suelen almacenar en su forma definitiva y para realizar cualquier cambio haría falta de un programador que la modifica 
+
+-beneficios de una página estática
+	-no es necesario saber programar
+	-al no variar siempre el contenido va a estar ahí y no se va a mover haciendo así  	más fácil para las arañas de google analizar la página para catalogarla a la hora de   	mostrarla
+
+	-dinámicas
+estas se caracteriza por que su contenido cambia en función de diversas variables, como el usuario que la usa, o los registros de las acciones hechas antes
+
+-tipos de páginas dinámicas:
+
+aquellas que incluyen código que ejecuta el navegador, normalmente javaScript, que se incluye dentro del código html y se descarga junto con la pagina y cuando el navegador muestra la pagina tambien ejecuta el código con el que viene
+
+
+aquella que tienen otras extensiones como .php, asp, .cgi, estas lo que ocurre es que el navegador descarga una página similar a una página estática (.html) y lo que cambia es la forma en la que se obtiene el contenido, haciendo que el html de estas páginas cambian como resultado de la ejecución de un programa, y esa ejecución tiene lugar en el servidor
+
+	-tal que:
+
+	1-cliente solicita
+	2-servidor busca la pagina
+	3-el servidor ejecuta el código
+	4-si es necesario consulta una base de datos
+	5-todo resulta en una página formato html
+	6-se le envía al cliente
+
+
+
+
+--aplicaciones web--
+
+emplean páginas dinámicas para su funcionamiento haciendo así que un servidor web las ejecute
+
+-ventajas
+
+	-no es necesario instalarlas en el equipo a usar
+	-al estar solo instaladas en un equipo, el servidor web, es más fácil gestionarlas,  	  hacer copias y actualizarlas
+	-se puede usar en cualquier sistema que cuente con un navegador
+	-se pueden usar siempre que cuentes con conexión al servidor
+
+-desventajas
+
+	-las interfaces se ven restringidas por el navegador 
+	-si no tenemos conexión con el servidor no podremos usarla 
+	-la información mostrada es retransmitida desde el servidor 
+
+
+Front-end y Back-end
+
+	-front
+este es el conjunto de páginas que ve el usuario 
+
+	-back
+este es el conjunto de páginas que solo ven los usuarios internos que se usan para administrar la aplicación y producir el contenido 
+
+
+componentes principales 
+
+-servidor web, usado para recibir peticiones de los clientes y para enviarles las páginas que solicitan, una vez generadas
+
+-módulo de ejecución, es donde se ejecuta el código o programa que genera la web resultante 
+
+-base de datos, no es necesario , pero se nombre 20 veces, es donde se almacenaron los datos de la aplicación web
+
+-lenguaje de programación
+
+
+
+capas:
+
+capa cliente: es donde se encuentra toda la interfaz de usuario y la parte visible de la app
+
+capa intermedia: donde se programa la funcionalidad de la aplicación 
+
+capa de acceso a datos: se encargará de acceder a los datos almacenados en la BBDD 
+
+
+--Arquitecturas--
+
+java EE
+
+orientada al desarrollo con java, funcionado con diferentes gestores de BBDD e incluyendo varias librerías y especificaciones para el desarrollo
+
+
+AMP apache MySQL y php/perl/python dependiendo del sistema Lamp Wamp Mamp
+
+los componentes son open source, y esta plataforma de programación permite desarrollar aplicaciones medianas/pequeñas, con la ventajas de la gran comunidad que la soporta
+
+CGI/Perl
+
+viejo lento y desaprovecha recursos
+
+ASP.net 
+es la arquitectura de microsoft $$ destinada a la generación de páginas dinámicas, contando con un buen ecosistemas basado en microsoft 
+
+
+--lenguajes--
+
+L de guiones (scripting) 
+es el que se ejecuta directamente desde el código duende sin procesarlo como tal, lo bueno es que es muy portable y se le pueden realizar cambios en cualquier momento pero lo malo es que son más lentos
+
+L compilados a código nativos
+Estos son los que primero se procesan a código binario para que el procesador los ejecute más rápido, siendo es su ventaja pero haciendo que cada cambio que le hagamos haya que volver a procesarlo haciéndolos menos portables 
+
+L compilación intermedia
+se procesan a un lenguaje medio haciendo así posible modificarlos mejor y ser más portables y ganar velocidad 
+
+
+phpmyadmin no viene instalado pero es recomendable 
+
+
+comentarios 
+//
+#
+/*  */
+
+
+===
+comprueba si son iguales y del mismo tipo
+
+7 int == 7 int V
+7 int == 7 float X
+
+
+<=> reputisima nave espacial
+
+a<=>B
+
+a<b -0
+a=b 0
+a>b +0
+
+$var = “uno”;
+$$var = “dos”;
+print ($var); // produce el texto: “uno”
+print ($uno); // produce el texto: “dos”
+print ($$var); // produce el texto: “dos”
+
+$a sin nada only en la funcion
+
+global $a en todos lados 
+static $a mantiene su valor siempre aun siendo modificado por una funcion 
