@@ -111,8 +111,7 @@ librerías y especificaciones para el desarrollo
 AMP apache MySQL y php/perl/python dependiendo del sistema Lamp Wamp Mamp
 
 los componentes son open source, y esta plataforma de programación permite desarrollar aplicaciones 
-medianas/pequeñas, con la ventajas de la gran 
-comunidad que la soporta
+medianas/pequeñas, con la ventajas de la gran comunidad que la soporta
 
 CGI/Perl
 
