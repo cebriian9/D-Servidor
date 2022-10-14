@@ -3,7 +3,7 @@
 -características de la programación web 
 
   	1-tu navegador solicita al servidor web una página, con extensión .html 
-	2- el servidor busca esa página en un almacén de páginas
+	2-el servidor busca esa página en un almacén de páginas
 	3-si el servidor la encuentra la recupera
 	4-la envía al cliente 
 
