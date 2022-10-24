@@ -1,11 +1,13 @@
 <?php
 
 function calculaCantidad($años,$aportacion,$interes){
-    floatval($resultado)=$aportacion+0.00;
+    
+    $resultado=$aportacion;
     for ($i=0; $i < $años; $i++) { 
-        $resultado+=($aportacion*$interes/100);
+        $resultado+=($resultado*$interes/100);
     }
-    return $resultado;
+    
+    return round($resultado,2);
 }
 
 $interes=5;
