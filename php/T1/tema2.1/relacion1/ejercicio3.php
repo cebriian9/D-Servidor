@@ -18,10 +18,4 @@
         else 
             echo('Todo okey <br>');
     }
-
-    
-
-
-        
-    
 ?>
