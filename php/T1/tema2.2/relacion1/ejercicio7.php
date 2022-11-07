@@ -14,7 +14,7 @@ function cuadrado($numero)
 function cubo($numero)
 {
     $resultado=pow($numero,3);
-
+    
     print("cubo: $resultado");
 }
 ?>
