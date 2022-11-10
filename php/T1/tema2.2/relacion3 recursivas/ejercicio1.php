@@ -1,14 +1,18 @@
 <?php
-$num=5;
+$n = 3;
 
-print("Resultado: ".fibonaxi($num));
+print("Resultado: " . fib($n));
 
-function fibonaxi($num){
-    $total=0;      
-    if ($total<=$num) {
-        $total=$total+fibonaxi($total+1);
-        return $total;
-    }
-    return $total;
+function fib($n)
+{
+    if ($n < 2)
+        return $n;
+
+    if ($n > 1)
+        return fib($n - 1) + fib($n - 2);
+
 }
+
+
+
 ?>
