@@ -3,5 +3,5 @@
 
     print(array_slice($alumno, 3));
 
-    print(array_splice())
+    
 ?>
