@@ -1,7 +1,18 @@
 <?php
-    $alumno=["juan","manolo","pepe","manolito","mario"];
+$alumnos = ["juan", "manolo", "pepe", "manolito", "mario"];
 
-    print(array_slice($alumno, 3));
 
-    
+
+//$ultimos = array_slice($alumnos, 3);
+
+$primeros = array_splice($alumnos, 3);
+
+
+
+print(" <br>primeros: ");
+foreach ($primeros as $alumno) {
+    print("$alumno ");
+}
+
+
 ?>
