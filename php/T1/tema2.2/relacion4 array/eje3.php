@@ -16,7 +16,7 @@ $colores= array(
 foreach ($colores as $tipo =>$color) {
     echo "$tipo:";
     foreach ($color as $nombre => $codigo) {
-        echo "<tr style='background-color:$codigo;'>$nombre:$codigo</td> ";
+        echo "<tr style='background-color: #FF0000;'>$nombre:$codigo</td> ";
     }
 
     echo "<br>";
