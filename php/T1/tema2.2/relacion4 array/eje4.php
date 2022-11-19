@@ -23,4 +23,17 @@ foreach ($colores as $tipo =>$color) {
 }   
 echo "</table>";
 
+print("Se encuenta el color 'FF88CC' y el color 'FF0000' en el array:<br>");
+
+if (in_array(array("FF88CC"),$colores)) {
+    print("FF88CC si esta<br>");
+}else{
+    print("FF88CC no esta<br>");
+}
+
+if (in_array(array("FF0000"),$colores)) {
+    print("FF0000 si esta<br>");
+}else{
+    print("FF0000 no esta<br>");
+}
 ?>
