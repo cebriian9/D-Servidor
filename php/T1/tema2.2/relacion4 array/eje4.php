@@ -25,6 +25,7 @@ echo "</table>";
 
 print("Se encuenta el color 'FF88CC' y el color 'FF0000' en el array:<br>");
 
+
 if (in_array(array("FF88CC"),$colores)) {
     print("FF88CC si esta<br>");
 }else{
