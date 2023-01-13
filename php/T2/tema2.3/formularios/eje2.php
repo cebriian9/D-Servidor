@@ -24,9 +24,9 @@
         <br><br>
 
         <label for="chek"><b>Chekbox</b></label>
-        <input type="checkbox" name="extra" id="garaje" value="garaje">garaje
-        <input type="checkbox" name="extra" id="piscina" value="piscina">piscina
-        <input type="checkbox" name="extra" id="gym" value="gym" checked>gym
+        <input type="checkbox" name="extra[]" id="garaje" value="garaje">garaje
+        <input type="checkbox" name="extra[]" id="piscina" value="piscina">piscina
+        <input type="checkbox" name="extra[]" id="gym" value="gym" checked>gym
         <br><br>
 
         <label for="file"><b>archivo</b></label>
@@ -58,7 +58,7 @@
 
         <label for="textArea"><b>Textarea</b></label>
         <br>
-        <textarea name="textArea" id="textA" cols="30" rows="10" placeholder="Escribe tu comentario..." value="nada"></textarea>
+        <textarea name="textArea" id="textA" cols="30" rows="10" placeholder="Escribe tu comentario..." ></textarea>
         <br><br>
         
         <input type="submit" value="enviar" name="enviar">
