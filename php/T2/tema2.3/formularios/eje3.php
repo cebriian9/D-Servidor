@@ -38,6 +38,5 @@
     
     ?>
 
-    <div id="perro"></div>
 </body>
 </html>
