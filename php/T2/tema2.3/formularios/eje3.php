@@ -28,11 +28,15 @@
         </span>
         <input type="submit" value="Buscar">
     </form>
+    <br><br>
 
     <?php
 
     foreach ($_REQUEST as $key => $value) {
-        echo ("La respuesta de $key es: $value<br>");
+
+        if (!empty($value)) {
+            echo ("La respuesta de $key es: $value<br>");
+        }
     }
 
     
