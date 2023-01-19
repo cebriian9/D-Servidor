@@ -9,30 +9,63 @@
 </head>
 
 <body>
-    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-        <label for="titulo"><b>titulo*</b></label>
-        <input type="text" name="titulo" id="titulo"><br>
 
-        <?php
+    <p>formulario:</p>
+    <?php
+    // Comprobación de si se ha pulsado el botón enviar
+    if (isset($_REQUEST['enviar'])) {
+        // Asiganción de variables y eliminación de espacios en la búsqueda
+        $titulo = ($_REQUEST['titulo']);
+        $noticia = trim($_REQUEST['noticia']);
+        $imagen = $_REQUEST['imagen'];
+    }
 
-        if (isset($_REQUEST['enviar']) && empty(trim($_REQUEST['titulo'])))
-            echo ("<span style='color:red;'> Debes introducir un titulo!! </span> <br>");
-        ?>
+    if (empty($_REQUEST['titulo']) || empty($_REQUEST['noticia']) || empty($_REQUEST['imagen'])) {
+    ?>
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+            <label for="titulo"><b>titulo*</b></label>
+            <input type="text" name="titulo" id="titulo" value="<?php echo ("$titulo") ?>"><br>
 
-        <label for="noticia"><b>contenido</b></label><br>
-        <textarea name="noticia" id="noticia" cols="30" rows="10" placeholder="Inserte noticia"></textarea><br>
+            <?php
 
-        <?php
-        if (isset($_REQUEST['enviar']) && empty(trim($_REQUEST['noticia'])))
-            echo ("<span style='color:red;'> Debes introducir el contenido!! </span> <br>");
-        ?>
+            if (isset($_REQUEST['enviar']) && empty(trim($_REQUEST['titulo'])))
+                echo ("<span style='color:red;'> Debes introducir un titulo!! </span> <br>");
+            ?>
+
+            <label for="noticia"><b>contenido</b></label><br>
+            <textarea name="noticia" id="noticia" cols="30" rows="10" placeholder="Inserte noticia"><?php echo ("$noticia") ?></textarea><br>
+
+            <?php
+            if (isset($_REQUEST['enviar']) && empty(trim($_REQUEST['noticia'])))
+                echo ("<span style='color:red;'> Debes introducir el contenido!! </span> <br>");
+            ?>
 
 
-        <label for="imagen"><b>imagen</b></label>
-        <input type="file" name="imagen" id="imagen"><br>
+            <label for="imagen"><b>imagen</b></label>
+            <input type="file" name="imagen" id="imagen"><!--falta que la imagen se quede--><br>
 
-        <input type="submit" value="enviar" name="enviar">
-    </form>
+            <?php
+            if (isset($_REQUEST['enviar']) && empty($_REQUEST['imagen']))
+                echo ("<span style='color:red;'> Debes adjuntar una foto!! </span> <br>");
+            ?>
+
+            <input type="submit" value="enviar" name="enviar">
+        </form>
+    <?php
+    } else {
+    ?>
+
+        <p>Titulo: <?php echo $_REQUEST['titulo']; ?></p>
+        <p>Noticia: <?php echo $_REQUEST['noticia']; ?></p>
+        <p>imagen: <?php echo $_REQUEST['imagen']; ?></p>
+
+        <a href="eje4.php">[Insertar otra noticia]</a>
+
+    <?php
+    }
+    ?>
+
+
 
 </body>
 
