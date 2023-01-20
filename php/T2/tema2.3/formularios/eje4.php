@@ -17,12 +17,14 @@
         // Asiganción de variables y eliminación de espacios en la búsqueda
         $titulo = ($_REQUEST['titulo']);
         $noticia = trim($_REQUEST['noticia']);
-        $imagen = $_REQUEST['imagen'];
+        
+        
+
     }
 
-    if (empty($_REQUEST['titulo']) || empty($_REQUEST['noticia']) || empty($_REQUEST['imagen'])) {
+    if (empty($_REQUEST['titulo']) || empty($_REQUEST['noticia'])) {
     ?>
-        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" >
             <label for="titulo"><b>titulo*</b></label>
             <input type="text" name="titulo" id="titulo" value="<?php echo ("$titulo") ?>"><br>
 
@@ -45,7 +47,7 @@
             <input type="file" name="imagen" id="imagen"><!--falta que la imagen se quede--><br>
 
             <?php
-            if (isset($_REQUEST['enviar']) && empty($_REQUEST['imagen']))
+            if (isset($_REQUEST['enviar']) && empty($_FILES['imagen']['prueba']))
                 echo ("<span style='color:red;'> Debes adjuntar una foto!! </span> <br>");
             ?>
 
@@ -57,7 +59,13 @@
 
         <p>Titulo: <?php echo $_REQUEST['titulo']; ?></p>
         <p>Noticia: <?php echo $_REQUEST['noticia']; ?></p>
-        <p>imagen: <?php echo $_REQUEST['imagen']; ?></p>
+        <p>imagen: <?php echo $_FILES['imagen']['prueba']; ?></p>
+        <?php
+        echo "name:".$_FILES['imagen']['prueba']."\n";
+        echo "tmp_name:".$_FILES['imagen']['tmp_name']."\n";
+        echo "size:".$_FILES['imagen']['size']."\n";
+        echo "type:".$_FILES['imagen']['type']."\n";
+        ?>
 
         <a href="eje4.php">[Insertar otra noticia]</a>
 
