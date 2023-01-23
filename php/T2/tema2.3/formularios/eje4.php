@@ -12,66 +12,61 @@
 
     <p>formulario:</p>
     <?php
-    // Comprobación de si se ha pulsado el botón enviar
+    //comporbar si entra por envio o por copiar enlace
     if (isset($_REQUEST['enviar'])) {
-        // Asiganción de variables y eliminación de espacios en la búsqueda
-        $titulo = ($_REQUEST['titulo']);
-        $noticia = trim($_REQUEST['noticia']);
-        
-        
+        //pocesar datos 
+        echo "El titulo : " . $_REQUEST['titulo'] . "<br>";
+        echo "El titulo : " . $_REQUEST['noticia'] . "<br>";
 
-    }
+        if (!empty($_FILES['imagen']['name'])) {
+            //comprobamos que la imagen se ha subido
+            if (is_uploaded_file($_FILES['imagen']['tmp_name'])) {
 
-    if (empty($_REQUEST['titulo']) || empty($_REQUEST['noticia'])) {
+                //comptobamos tipo 
+                $tipo = mime_content_type($_FILES['imagen']['tmp_name']);
+                if (strstr($tipo, "image")) {
+
+                    //nombre unico con time()
+
+                    $nombre = time() . $_FILES['imagen']['name'];
+                    //lo movemos
+                    if (move_uploaded_file($_FILES['imagen']['tmp_name'], "img/".$nombre)) {
+                        //se movio
+                        // y se mostra
+
+                        echo "<img src='img/$nombre' alt='foto subida por usuario'>";
+                    } else {
+                        echo "no se pudo guardar";
+                    }
+                } else {
+                    //no es una imagen
+                    echo "el fichero debe de ser una imagen";
+                }
+            } else {
+                echo 'error al subir el archivo';
+            }
+        } else {
+            echo "debes subir una imagen";
+        }
+    } else {
+        //cargar form
     ?>
-        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" >
+        <form action="#" method="post" enctype="multipart/form-data">
             <label for="titulo"><b>titulo*</b></label>
-            <input type="text" name="titulo" id="titulo" value="<?php echo ("$titulo") ?>"><br>
-
-            <?php
-
-            if (isset($_REQUEST['enviar']) && empty(trim($_REQUEST['titulo'])))
-                echo ("<span style='color:red;'> Debes introducir un titulo!! </span> <br>");
-            ?>
+            <input type="text" name="titulo" id="titulo"><br>
 
             <label for="noticia"><b>contenido</b></label><br>
-            <textarea name="noticia" id="noticia" cols="30" rows="10" placeholder="Inserte noticia"><?php echo ("$noticia") ?></textarea><br>
-
-            <?php
-            if (isset($_REQUEST['enviar']) && empty(trim($_REQUEST['noticia'])))
-                echo ("<span style='color:red;'> Debes introducir el contenido!! </span> <br>");
-            ?>
-
+            <textarea name="noticia" id="noticia" cols="30" rows="10" placeholder="Inserte noticia"></textarea><br>
 
             <label for="imagen"><b>imagen</b></label>
-            <input type="file" name="imagen" id="imagen"><!--falta que la imagen se quede--><br>
-
-            <?php
-            if (isset($_REQUEST['enviar']) && empty($_FILES['imagen']['prueba']))
-                echo ("<span style='color:red;'> Debes adjuntar una foto!! </span> <br>");
-            ?>
+            <input type="file" name="imagen"><br>
 
             <input type="submit" value="enviar" name="enviar">
         </form>
     <?php
-    } else {
-    ?>
-
-        <p>Titulo: <?php echo $_REQUEST['titulo']; ?></p>
-        <p>Noticia: <?php echo $_REQUEST['noticia']; ?></p>
-        <p>imagen: <?php echo $_FILES['imagen']['prueba']; ?></p>
-        <?php
-        echo "name:".$_FILES['imagen']['prueba']."\n";
-        echo "tmp_name:".$_FILES['imagen']['tmp_name']."\n";
-        echo "size:".$_FILES['imagen']['size']."\n";
-        echo "type:".$_FILES['imagen']['type']."\n";
-        ?>
-
-        <a href="eje4.php">[Insertar otra noticia]</a>
-
-    <?php
     }
     ?>
+
 
 
 
