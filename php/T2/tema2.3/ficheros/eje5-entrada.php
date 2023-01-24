@@ -11,7 +11,7 @@
 <body>
     <h3>Formumaliro simple</h3>
 
-    <form action="#" method="post">
+    <form action="eje1-lectura.php" method="post">
         <span>Texto a buscar <input type="text" name="cancion" id="cancion"></span><br><br>
 
         <?php if (empty(trim($_REQUEST['cancion'])) && (isset($_REQUEST['enviar']))) {
