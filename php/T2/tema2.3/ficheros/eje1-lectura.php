@@ -12,8 +12,6 @@
 
     <?php
 
-
-
     $original = fopen("../formularios/eje1.php", "r");
     $salida = fopen("salida1.txt", "w");
 
@@ -32,6 +30,7 @@
     fclose($salida);
 
     echo "bits escritos $bits";
+
     ?>
 </body>
 
