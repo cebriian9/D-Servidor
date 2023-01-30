@@ -18,11 +18,11 @@
         die("error al abrir");
     }
 
-    $dato="---------\nNombre: $nombre \nComentario: $comentario \n---------\n";
+    $dato="---------<br>\nNombre: $nombre <br>\nComentario: $comentario <br>\n---------<br>\n";
 
     fwrite($file,$dato);
 
-    echo "Los datos se guardaron chido";
+    echo "Los datos se guardaron chido <br>";
     print ($dato);
 
     fclose($file);
