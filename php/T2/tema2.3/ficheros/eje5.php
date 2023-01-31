@@ -50,12 +50,13 @@
                 die("Error al abrir fichero1");
             }
 
-            if (empty(trim($_REQUEST['nombre'])) || empty(trim($_REQUEST['destino'])) || empty(trim($_REQUEST['duracion'])) || empty(trim($_REQUEST['salida']))) {
+
+            //comprobamos si tdos los campos estan rellenitos
+            if (empty(trim($_REQUEST['nombre'])) || empty(trim($_REQUEST['destino'])) || empty(trim($_REQUEST['duracion'])) || empty(trim($_REQUEST['salida'] || (isset($_REQUEST['enviar'])) ))) {
                 echo "😡😡😡😡Debes de rellenar todos los campos😡😡😡😡";
             }else {
                 fwrite($viajes, $_REQUEST['nombre'] . ":" . $_REQUEST['destino'] . ":" . $_REQUEST['duracion'] . ":" . $_REQUEST['salida'] . "\n");
             }
-
 
             //cerramos
             fclose($viajes);
@@ -63,6 +64,7 @@
 
             //comprobamos que exista
             if (file_exists("viajes.txt")) {
+
                 //abrimos para lectura
                 $viajes = fopen("viajes.txt", "r");
 
