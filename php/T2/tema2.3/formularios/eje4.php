@@ -34,7 +34,7 @@
                         //se movio
                         // y se mostra
 
-                        echo "<img src='img/$nombre' alt='foto subida por usuario'>";
+                        echo "<img src='img/$nombre' alt='foto subida por usuario' width='100px' height='100px'>";
                     } else {
                         echo "no se pudo guardar";
                     }
