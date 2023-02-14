@@ -9,4 +9,14 @@ if ($error != null) {
 }
 echo "<h1>Conexión realizada correctamente</h1>";
 
-$result= $dwes -> query;
+$resultado = $conexion->query('SELECT * FROM noticias');
+        while ($fila = $resultado->fetch_array()) {
+            echo ("<tr>");
+            for($i=0;$i<5;$i++)
+            {
+                echo("<td>");
+                echo($fila[$i]);
+                echo("</td>");
+            }
+            echo ("</tr>");
+        }
