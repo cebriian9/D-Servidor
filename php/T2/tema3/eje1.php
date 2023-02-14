@@ -22,10 +22,9 @@
                 <th class="col-1">Imagen</th>
             </tr>
             <?php
-
-            $conexion = mysqli_connect('localhost', 'dwes', 'abc123.', 'inmobiliaria');
             
-            print $conexion->query('SELECT * from noticias', MYSQLI_USE_RESULT);
+            include "eje1.inc.php";
+
             ?>
         </table>
     </div>
