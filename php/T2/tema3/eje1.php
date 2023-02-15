@@ -15,6 +15,7 @@
 
         <table class="table">
             <tr class="table-primary">
+                <th class="col-1">ID</th>
                 <th class="col-4">Titulo</th>
                 <th class="col-6">Texto</th>
                 <th>Categoria</th>
@@ -24,7 +25,7 @@
             <?php
             
             include "eje1.inc.php";
-
+            
             ?>
         </table>
     </div>
