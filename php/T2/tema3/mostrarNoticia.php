@@ -10,12 +10,12 @@
 </head>
 
 <body>
-    <div class="container">
-        <p class="h3 text-primary my-5">Consulta de noticias chidas</p>
+    <div class="container my-5">
+        <p class="h3 text-primary ">Consulta de noticias chidas</p>
 
         <table class="table">
             <tr class="table-primary">
-                <th class="col-1">ID</th>
+                
                 <th class="col-4">Titulo</th>
                 <th class="col-6">Texto</th>
                 <th>Categoria</th>
@@ -24,10 +24,12 @@
             </tr>
             <?php
             
-            include "eje1.inc.php";
-            
+            include "main.inc.php";
+            mostrarBD($conexion);
             ?>
         </table>
+
+        <a href="agregarNoticia.php">Agregar noticias</a>
     </div>
 </body>
 
