@@ -15,7 +15,7 @@
     <div class="container my-5">
         <p class="h3 text-primary">Agrega noticias chidas</p>
 
-        <form action="#" method="post" class="border p-4 ">
+        <form action="#" method="post" enctype="multipart/form-data" class="border p-4 ">
             <div class="row">
                 <div class="col">
                     <p>Titulo*</p>

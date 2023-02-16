@@ -17,29 +17,58 @@ function mostrarBD($conexion)
 
     while ($row = $resultado->fetch_array()) {
         echo "<tr>";
-        for ($i = 0; $i < 6; $i++) {
+        for ($i = 1; $i < 6; $i++) {
             echo "<td>$row[$i]</td>";
         }
         echo "</tr>";
     }
 }
 
+function mostrarBDBorrado($conexion)
+{
+    $sql = "SELECT * FROM noticias";
+
+    $resultado = $conexion->query($sql);
+
+    while ($row = $resultado->fetch_array()) {
+        echo "<tr>";
+        for ($i = 1; $i < 6; $i++) {
+            echo "<td>$row[$i]</td>";
+        }
+        echo "<td> <input type='checkbox' name='borrado[]' value='$row[0]'> </td>";
+        echo "</tr>";
+    }
+
+    if (isset($_REQUEST['borrado'])) {
+        $idNoticias = $_REQUEST['borrado'];
+        $idNoticias = implode(",", $idNoticias);
+
+        $sql = "DELETE FROM noticias WHERE id IN ($idNoticias)";
+
+        $conexion->query($sql);
+
+        header("location:eliminarNoticia.php");
+    }
+
+    
+}
+
 function insertarNoticia($conexion)
 {
-    $id = $conexion->query("SELECT max(id) from noticias");
-    $id=$id->fetch_object();
-    $id++;
+    
+
     $titulo = $_REQUEST['titulo'];
     $texto = $_REQUEST['texto'];
     $categoria = $_REQUEST['categoria'];
-    $fecha=date('d-m-y');
-    if (!empty($_FILES['foto']['tmp_name'])) {
-        $foto=$_FILES['foto']['tmp_name'];
-    }else {
-        $foto=null;
+    $fecha = date('y-m-d');
+
+    if (!empty($_FILES['foto']['name'])) {
+        $foto = $_FILES['foto']['name'];
+    } else {
+        $foto = NULL;
     }
 
-    $sql = "INSERT INTO noticias VALUES($id,'$titulo','$texto','$categoria','$fecha','$foto')";
+    $sql = "INSERT INTO noticias  VALUES(null,'$titulo','$texto','$categoria','$fecha','$foto')";
 
     $conexion->query($sql);
 }

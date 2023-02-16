@@ -13,6 +13,8 @@
     <div class="container my-5">
         <p class="h3 text-primary ">Consulta de noticias chidas</p>
 
+        <p>Filtro <!--DISTINCT. un select de todas las categorias con distinct no se repita y mostrarlo y parafernalias--></p>
+
         <table class="table">
             <tr class="table-primary">
                 
@@ -21,6 +23,7 @@
                 <th>Categoria</th>
                 <th class="col-3">Fecha</th>
                 <th class="col-1">Imagen</th>
+                
             </tr>
             <?php
             
@@ -30,6 +33,7 @@
         </table>
 
         <a href="agregarNoticia.php">Agregar noticias</a>
+        <a href="eliminarNoticia.php">Eliminar noticias</a>
     </div>
 </body>
 
