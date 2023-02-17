@@ -64,7 +64,9 @@
             </div>
             <button type="submit" name="enviar" value="enviar" class="btn btn-primary">Agregar noticia</button>
         </form>
-        <a href="mostrarNoticia.php">Volver al inicio</a>
+        <a href="mostrarNoticia.php">Mostrar noticias</a>
+        <a href="agregarNoticia.php">Agregar noticias</a>
+        <a href="eliminarNoticia.php">Eliminar noticias</a>
         <?php
         include "main.inc.php";
 

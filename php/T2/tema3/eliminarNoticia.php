@@ -24,6 +24,7 @@
                     <th class="col-3">Fecha</th>
                     <th class="col-1">Imagen</th>
                     <th class="col-1">Borrar</th>
+                    
                 </tr>
                 <?php
 
@@ -34,8 +35,9 @@
             <button type="submit" name="enviar" value="enviar" class="btn btn-primary">Eliminar noticias</button><br><br>
 
         </form>
-
+        <a href="mostrarNoticia.php">Mostrar noticias</a>
         <a href="agregarNoticia.php">Agregar noticias</a>
+        <a href="eliminarNoticia.php">Eliminar noticias</a>
     </div>
 </body>
 

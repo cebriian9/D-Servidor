@@ -9,35 +9,58 @@ if ($error != null) {
 }
 
 
-function mostrarBD($conexion)
+function mostrarBD($conexion, $filtro)
 {
-    $sql = "SELECT * FROM noticias";
+    $sql = "SELECT * FROM noticias WHERE categoria $filtro";
 
     $resultado = $conexion->query($sql);
 
-    while ($row = $resultado->fetch_array()) {
+    $row = $resultado->fetch_object();
+
+    while ($row != null) {
         echo "<tr>";
-        for ($i = 1; $i < 6; $i++) {
-            echo "<td>$row[$i]</td>";
+        echo "<td>$row->titulo </td>";
+        echo "<td>$row->texto </td>";
+        echo "<td>$row->categoria </td>";
+        echo "<td>$row->fecha </td>";
+
+        //si imgane es null no muestro nada
+        if ($row->imagen != null) {
+            echo "<td><img src='img/$row->imagen' alt='$row->imagen' class='img-fluid'> </td>";
+        } else {
+            echo "<td> </td>";
         }
+
         echo "</tr>";
+        //bajo de linea
+        $row = $resultado->fetch_object();
     }
 }
 
 function mostrarBDBorrado($conexion)
 {
+    //mostrar base de datos
     $sql = "SELECT * FROM noticias";
-
     $resultado = $conexion->query($sql);
-
-    while ($row = $resultado->fetch_array()) {
+    $row = $resultado->fetch_object();
+    while ($row != null) {
         echo "<tr>";
-        for ($i = 1; $i < 6; $i++) {
-            echo "<td>$row[$i]</td>";
+        echo "<td>$row->titulo </td>";
+        echo "<td>$row->texto </td>";
+        echo "<td>$row->categoria </td>";
+        echo "<td>$row->fecha </td>";
+
+        //si imgane es null no muestro nada
+        if ($row->imagen != null) {
+            echo "<td><img src='img/$row->imagen' alt='$row->imagen' class='img-fluid'> </td>";
+        } else {
+            echo "<td> </td>";
         }
-        echo "<td> <input type='checkbox' name='borrado[]' value='$row[0]'> </td>";
+        echo "<td> <input type='checkbox' name='borrado[]' value='$row->id'> </td>";
         echo "</tr>";
-    }
+        //bajo de linea
+        $row = $resultado->fetch_object();
+    } //mostrar base de datos
 
     if (isset($_REQUEST['borrado'])) {
         $idNoticias = $_REQUEST['borrado'];
@@ -45,64 +68,69 @@ function mostrarBDBorrado($conexion)
 
         $sql = "DELETE FROM noticias WHERE id IN ($idNoticias)";
 
+
+        unlink('img/' . $row->imagen);
         $conexion->query($sql);
 
         header("location:eliminarNoticia.php");
     }
-
-    
 }
 
 function insertarNoticia($conexion)
 {
-    
 
     $titulo = $_REQUEST['titulo'];
     $texto = $_REQUEST['texto'];
     $categoria = $_REQUEST['categoria'];
     $fecha = date('y-m-d');
 
-    if (!empty($_FILES['foto']['name'])) {
-        $foto = $_FILES['foto']['name'];
+
+    //compruebo que la imagen se ha introducido comparandola con una cadena vacia
+    if (strcmp($_FILES['foto']['name'],"")) {
+
+        //si foto esta bien y guardada devuelve el nombre, sino false
+        $foto = guardarFoto();
+
     } else {
-        $foto = NULL;
+        $foto = null;
     }
 
-    $sql = "INSERT INTO noticias  VALUES(null,'$titulo','$texto','$categoria','$fecha','$foto')";
+    //si foto es false la foto esta mal y no se sube la noticia
+    if ($foto !== false) {
+        $sql = "INSERT INTO noticias  VALUES(null,'$titulo','$texto','$categoria','$fecha','$foto')";
 
-    $conexion->query($sql);
+        $conexion->query($sql);
+    }
 }
 
 
-function guardarFoto(){
-    if (!empty($_FILES['imagen']['name'])) {
-        //comprobamos que la imagen se ha subido
-        if (is_uploaded_file($_FILES['imagen']['tmp_name'])) {
+function guardarFoto()
+{
+    //comprobamos que la foto se ha subido
+    if (is_uploaded_file($_FILES['foto']['tmp_name'])) {
 
-            //comptobamos tipo 
-            $tipo = mime_content_type($_FILES['imagen']['tmp_name']);
-            if (strstr($tipo, "image")) {
+        //comptobamos tipo 
+        $tipo = mime_content_type($_FILES['foto']['tmp_name']);
+        if (strstr($tipo, "image")) {
 
-                //nombre unico con time()
+            //nombre unico con time()
+            $nombre = time() . $_FILES['foto']['name'];
+            //lo movemos
+            if (move_uploaded_file($_FILES['foto']['tmp_name'], "img/" . $nombre)) {
+                //se movio
 
-                $nombre = time() . $_FILES['imagen']['name'];
-                //lo movemos
-                if (move_uploaded_file($_FILES['imagen']['tmp_name'], "img/".$nombre)) {
-                    //se movio
-                    // y se mostra
-
-                    echo "<img src='img/$nombre' alt='foto subida por usuario' width='100px' height='100px'>";
-                } else {
-                    echo "no se pudo guardar";
-                }
             } else {
-                //no es una imagen
-                echo "el fichero debe de ser una imagen";
+                echo "<p class='text-danger'>no se pudo guardar</p>";
+                $nombre = false;
             }
         } else {
-            echo 'error al subir el archivo';
+            //no es una foto
+            echo "<p class='text-danger'>el fichero debe de ser una foto</p>";
+            $nombre = false;
         }
     } else {
-        echo "debes subir una imagen";
+        echo "<p class='text-danger'>error al subir el archivo</p>";
+        $nombre = false;
     }
+    return $nombre;
 }
