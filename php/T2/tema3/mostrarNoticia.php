@@ -16,14 +16,14 @@
         <p>Categorias: <!--DISTINCT. un select de todas las categorias con distinct no se repita y mostrarlo y parafernalias--></p>
 
         <form action="#" method="post" class="mb-4">
-        <select name="filtro" id="" class="p-1">
-        <option value="">Todo</option>
-            <option value="='promociones'">Promociones</option>
-            <option value="='ofertas'">ofertas</option>
-            <option value="='costas'">costas</option>
-        </select>
-        
-        <button type="submit" name="enviar" value="enviar" class="btn btn-primary p-1">Filtrar</button>
+            <select name="filtro" id="" class="p-1">
+                <option value="">Todo</option>
+                <option value="='promociones'">Promociones</option>
+                <option value="='ofertas'">ofertas</option>
+                <option value="='costas'">costas</option>
+            </select>
+
+            <button type="submit" name="enviar" value="enviar" class="btn btn-primary p-1">Filtrar</button>
         </form>
 
         <table class="table">
